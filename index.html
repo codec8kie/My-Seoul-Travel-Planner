@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>My Seoul Travel Planner</title>
+<link href="asset/css/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="asset/css/common.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <!-- Modal Popup -->
+    <div class="modal dn">
+        <!-- 계획 추가 Modal Popup -->
+    	<div id="form-dialog" class="createForm dialog shadow dn">
+            <form>
+                <div>
+                    <label for="title">계획 제목</label>
+                    <input type="text" id="title" title="계획 제목">
+                </div>
+            	<div>
+                	<label for="place">관광할 장소</label>
+                    <select id="place">
+                    	<optgroup label="궁궐">
+                        	<option>경복궁</option>
+                            <option>창덕궁</option>
+                            <option></option>
+                            <option>to be continued</option>
+                        </optgroup>
+                    </select>
+                </div>
+            	<div>
+                    <!-- 관광 -->
+                	<label for="sdate">관광할 날짜</label>
+                    <input type="text" id="sdate" placeholder="yy-mm-dd" title="관광할 날짜">
+                </div>
+            	<div>
+                    <!-- 관광 시간 -->
+                	<label for="time">관광할 시간</label>
+                    <select id="time" style="margin-bottom:10px">
+                    	<option value="00">00 시</option>
+                        <option value="01">01 시</option>
+                        <option value="02">02 시</option>
+                        <option></option>
+                        <option>...</option>
+                        <option></option>
+                        <option value="23">23시</option>
+                    </select>
+                    <select id="time2">
+                    	<option value="00">00 분</option>
+                        <option value="01">01 분</option>
+                        <option value="02">02 분</option>
+                        <option></option>
+                        <option>...</option>
+                        <option></option>
+                        <option value="59">59분</option>
+                    </select>
+                    <!-- end 관광 시간 -->
+                </div>
+                <div>
+                	<label for="text">간단한 메모</label>
+                	<textarea id="text" rows="6" title="간단한 메모"></textarea>
+                    <div class="list-check"></div>
+                </div>
+                <div class="tr" style="padding-top: 5px; text-align: right;">
+                    <button type="button">리스트 작성</button>
+                </div>
+                <div style="padding-top:10px; text-align:right;">
+                	<button type="button">기록</button>
+                    <button type="button">닫기</button>
+                </div>
+            </form>
+        </div>
+        <!-- end 계획 추가 Modal Popup -->
+
+        <!-- 리스트 추가 Modal Popup -->
+        <div id="form-list" class="listForm dialog shadow dn">
+            <form>
+                <h3>리스트 작성</h3>
+                <div>
+                    <input type="text" placeholder="리스트 1">
+                    <input type="text" placeholder="리스트 2">
+                    <input type="text" placeholder="리스트 3">
+                </div>
+                <div class="tr">
+                    <button type="button" class="btn">+</button>
+                    <button type="button" class="btn">-</button>
+                </div>
+                <div class="tr submitForm">
+                    <button type="button">확인</button>
+                    <button type="button">취소</button>
+                </div>
+            </form>
+        </div>
+        <!-- end 리스트 추가 Modal Popup -->
+    </div>
+    <!-- end Modal Popup -->
+
+    <!-- Application Main Page -->
+	<div class="header">
+    	<div>
+        	<h1>
+            	<span class="today">13th</span>
+                <span class="week">Friday</span>
+            </h1>
+            <div class="year">
+                2016 May
+            </div>
+        </div>
+        <div>
+        	<h2>My Seoul Travel Planner</h2>
+        </div>
+    </div>
+
+    <!-- 검색 및 추가 버튼 -->
+    <div class="optBox">
+        <form action="#">
+            <div id="add-button-form">
+                <button type="button" class="circle shadow" id="createBtn">+</button>
+                Add Task or Schedule
+            </div>
+            <div id="search-form">
+                <label for="search"><img src="image/icon1.png" alt="돋보기" title="돋보기"></label>
+                <input type="text" id="search" placeholder="Search">
+            </div>
+            <div id="radio-form">
+                <div>
+                    <input type="radio" checked="" name="days" id="all" value="1">
+                    <label for="all">전체</label>
+                    <input type="radio" name="days" id="today" value="2">
+                    <label for="today">당일</label>
+                </div>
+            </div>  
+        </form>
+    </div>
+    <!-- end 검색 및 추가 버튼 -->
+    <div class="container content">
+
+        <!-- Timeline -->
+    	<div class="height-schedule">
+        	<div class="tag shadow">Schedules</div>
+                <div class="schedule">
+                	<!-- <div>
+                    	<div class="card shadow">
+                        	<div class="time">2016-05-13 | AM 11:30</div>
+                            <p class="str">점심식사 (창덕궁)</p>
+                        </div>
+                    </div>
+                	<div>
+                    	<div class="card shadow">
+                        	<div class="time">2016-05-13 | AM 12:30</div>
+                            <p class="str">관광 (경복궁)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card shadow">
+                            <div class="time">2016-05-13 | PM 06:30</div>
+                            <p class="str">저녁관람 (창덕궁)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card shadow">
+                            <div class="time">2016-05-13 | PM 08:30</div>
+                            <p class="str">야간관광 (경복궁)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card shadow">
+                            <div class="time">2016-05-14 | AM 01:30</div>
+                            <p class="str">심야 야경관광 (경복궁)</p>
+                        </div>
+                    </div> -->
+                <div>
+                	<!-- End div -->
+                </div>
+            </div>
+        </div>
+        <!-- Timeline -->
+
+        <!-- 계획판 -->
+        <div class="column-schedule" data-masonry='{"columnWidth":50,"itemColumn":".card"}'>
+        	<!-- <div class="card shadow">
+            	<div class="tag tomato">점심식사</div>
+                <div class="area">
+                	<div class="date">2016-05-13 | AM 11:30</div>
+                    <div class="content">
+                    	오늘 계획은 창덕궁에서 점심을 먹는거다 !
+                        <ul>
+                        	<li>계란말이</li>
+                            <li>샐러드</li>
+                            <li>밥</li>
+                        </ul>
+                    </div>
+                    <div class="place">
+                    	<div>
+                        	<div>창덕궁</div>
+                            <div class="place-type">궁궐</div>
+                        </div>
+                        <div>
+                        	<img src="image/2.jpg" alt="창덕궁" title="창덕궁">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        	<!-- <div class="card shadow">
+            	<div class="tag blue">관광</div>
+                <div class="area">
+                	<div class="date">2016-05-13 | PM 12:30</div>
+                    <div class="content">
+                    	경복궁 관람부터하고 다음 장소로 이동할 예정.
+                    </div>
+                    <div class="place">
+                    	<div>
+                        	<div>경복궁</div>
+                            <div class="place-type">궁궐</div>
+                        </div>
+                        <div>
+                        	<img src="image/1.jpg" alt="경복궁" title="경복궁">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        	<!-- <div class="card shadow">
+            	<div class="tag tomato">저녁관람</div>
+                <div class="area">
+                	<div class="date">2016-05-13 | PM 06:30</div>
+                    <div class="content">
+                    	야간개장하는 관람지에서 봐야할 것
+                        <ul>
+                        	<li>경희궁 입구</li>
+                            <li>경희궁 내부</li>
+                            <li>경희궁 정원</li>
+                        </ul>
+                    </div>
+                    <div class="place">
+                    	<div>
+                        	<div>창덕궁</div>
+                            <div class="place-type">궁궐</div>
+                        </div>
+                        <div>
+                        	<img src="image/5.jpg" alt="경희궁" title="경희궁">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        	<!-- <div class="card shadow">
+            	<div class="tag blue">야간관광</div>
+                <div class="area">
+                	<div class="date">2016-05-13 | PM 08:30</div>
+                    <div class="content">
+                    	저녁 궁궐 관람하기
+                    </div>
+                    <div class="place">
+                    	<div>
+                        	<div>경복궁</div>
+                            <div class="place-type">궁궐</div>
+                        </div>
+                        <div>
+                        	<img src="image/1.jpg" alt="경복궁" title="경복궁">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        	<!-- <div class="card shadow">
+            	<div class="tag blue">심야 야경관광</div>
+                <div class="area">
+                	<div class="date">2016-05-14 | AM 01:30</div>
+                    <div class="content">
+                    	심야 관광지 투어
+                    </div>
+                    <div class="place">
+                    	<div>
+                        	<div>경복궁</div>
+                            <div class="place-type">궁궐</div>
+                        </div>
+                        <div>
+                        	<img src="image/1.jpg" alt="경복궁" title="경복궁">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- end 계획판 -->
+    </div>
+    <!-- end Application Main Page -->
+    
+    <!-- Script -->
+    <script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="asset/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="masonry/masonry.pkgd.js"></script>
+	<script type="text/javascript" src="asset/js/common.js"></script>
+    <!-- end Script -->
+</body>
+</html>

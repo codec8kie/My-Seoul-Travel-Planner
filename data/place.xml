@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<place>
+	<type name="궁궐">
+		<data>
+			<title>경복궁</title>
+			<image>1.jpg</image>
+		</data>
+		<data>
+			<title>창덕궁</title>
+			<image>2.jpg</image>
+		</data>
+		<data>
+			<title>창경궁</title>
+			<image>3.jpg</image>
+		</data>
+		<data>
+			<title>덕수궁</title>
+			<image>4.jpg</image>
+		</data>
+		<data>
+			<title>경희궁</title>
+			<image>5.jpg</image>
+		</data>
+	</type>
+	<type name="자연">
+		<data>
+			<title>청계천</title>
+			<image>6.jpg</image>
+		</data>
+		<data>
+			<title>남산</title>
+			<image>7.jpg</image>
+		</data>
+	</type>
+	<type name="박물관">
+		<data>
+			<title>국립민속박물관</title>
+			<image>8.jpg</image>
+		</data>
+		<data>
+			<title>국립중앙박물관</title>
+			<image>9.jpg</image>
+		</data>
+		<data>
+			<title>풀무원 김치박물관</title>
+			<image>10.jpg</image>
+		</data>
+	</type>
+	<type name="문화">
+		<data>
+			<title>서울월드컵경기장</title>
+			<image>11.jpg</image>
+		</data>
+		<data>
+			<title>서울도서관</title>
+			<image>12.jpg</image>
+		</data>
+		<data>
+			<title>홍릉수목원</title>
+			<image>13.jpg</image>
+		</data>
+	</type>
+</place>
